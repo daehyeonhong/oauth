@@ -4,3 +4,8 @@ spring:
     username: ${datasource.username:NONE}
     password: ${datasource.password:NONE}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    include: oauth
+  jpa:
+    hibernate:
+      ddl-auto: update
