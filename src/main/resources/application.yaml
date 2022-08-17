@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: ${datasource.url:NONE}
+    username: ${datasource.username:NONE}
+    password: ${datasource.password:NONE}
+    driver-class-name: com.mysql.cj.jdbc.Driver
