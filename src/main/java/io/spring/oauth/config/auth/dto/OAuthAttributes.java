@@ -3,10 +3,8 @@ package io.spring.oauth.config.auth.dto;
 import io.spring.oauth.user.domain.Role;
 import io.spring.oauth.user.domain.User;
 import lombok.Builder;
-import lombok.Getter;
 import java.util.Map;
 
-@Getter
 public record OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String name, String email,
                               String picture) {
     @Builder
