@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class IndexController {
     @GetMapping("/")
-    public String index(Model model, @LoginUser SessionUser user) {
+    public String index(final Model model, @LoginUser final SessionUser user) {
         if (user != null) model.addAttribute("userName", user.getName());
         return "index";
     }

@@ -11,14 +11,14 @@ public record OAuthAttributes(Map<String, Object> attributes, String nameAttribu
     public OAuthAttributes {
     }
 
-    public static OAuthAttributes of(String registrationId,
-                                     String userNameAttributeName,
-                                     Map<String, Object> attributes) {
+    public static OAuthAttributes of(final String registrationId,
+                                     final String userNameAttributeName,
+                                     final Map<String, Object> attributes) {
         return ofGoogle(userNameAttributeName, attributes);
     }
 
-    private static OAuthAttributes ofGoogle(String userNameAttributeName,
-                                            Map<String, Object> attributes) {
+    private static OAuthAttributes ofGoogle(final String userNameAttributeName,
+                                            final Map<String, Object> attributes) {
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
@@ -27,7 +27,6 @@ public record OAuthAttributes(Map<String, Object> attributes, String nameAttribu
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
-
 
     public User toEntity() {
         return User.builder()

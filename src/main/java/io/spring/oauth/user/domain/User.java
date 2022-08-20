@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
@@ -33,19 +33,19 @@ public class User extends BaseTimeEntity {
     @Column
     String picture;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = STRING)
     @Column(nullable = false)
     Role role;
 
     @Builder
-    public User(String name, String email, String picture, Role role) {
+    public User(final String name, final String email, final String picture, final Role role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
         this.role = role;
     }
 
-    public User update(String name, String picture) {
+    public User update(final String name, final String picture) {
         this.name = name;
         this.picture = picture;
 
