@@ -1,6 +1,7 @@
 package io.spring.oauth.config.auth;
 
 import io.spring.oauth.config.auth.dto.OAuthAttributes;
+import io.spring.oauth.config.auth.dto.SessionUser;
 import io.spring.oauth.user.UserRepository;
 import io.spring.oauth.user.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
-import java.util.Collections;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -30,14 +31,13 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         final String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
-        final OAuthAttributes attributes = OAuthAttributes.
-                of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+        final OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        final User user = saveOrUpdate(attributes);
+        final User user = this.saveOrUpdate(attributes);
         httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+                Set.of(new SimpleGrantedAuthority(user.getRoleKey())),
                 attributes.attributes(),
                 attributes.nameAttributeKey());
     }

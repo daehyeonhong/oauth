@@ -1,4 +1,4 @@
-package io.spring.oauth.config.auth;
+package io.spring.oauth.config.auth.dto;
 
 import io.spring.oauth.user.domain.User;
 import lombok.Getter;

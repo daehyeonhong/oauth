@@ -1,7 +1,7 @@
 package io.spring.oauth.common.controller;
 
 import io.spring.oauth.config.auth.LoginUser;
-import io.spring.oauth.config.auth.SessionUser;
+import io.spring.oauth.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
