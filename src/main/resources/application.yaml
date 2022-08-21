@@ -7,5 +7,11 @@ spring:
   profiles:
     include: oauth
   jpa:
+    open-in-view: false
     hibernate:
       ddl-auto: update
+  session:
+    store-type: redis
+  redis:
+    host: localhost
+    port: 6379
